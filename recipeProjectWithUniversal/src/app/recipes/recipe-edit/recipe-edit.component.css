@@ -1,0 +1,22 @@
+div.ingredients {
+  margin: 10px 0;
+}
+
+div.buttons button {
+  margin: 5px;
+}
+
+div.ingredient {
+  margin: 5px 0;
+}
+
+input.ng-invalid,
+textarea.ng-invalid {
+  border: 2px solid red;
+}
+
+img {
+  max-height: 150px;
+  margin: 10px;
+  border-radius: 5px;
+}

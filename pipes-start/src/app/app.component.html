@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <label for="limiter">Limiter</label>
+    <input type="number" id="limiter" #limit />
+    <button (click)="onAddLimiter(limit)">Submit</button>
+  </div>
+  <div class="row">
+    <label for="status">Status</label>
+    <input type="text" id="status" [(ngModel)]="filteredStatus" />
+    <button (click)="onAddLimiter(limit)">Submit</button>
+  </div>
+  <div class="row">
+    <button (click)="onAddServer()">Add Server</button>
+  </div>
+
+  <br />
+  <h2>App Status: {{ appStatus | async }}</h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let server of servers | filter: filteredStatus:'status'"
+          [ngClass]="getStatusClasses(server)"
+        >
+          <span class="badge">
+            {{ server.status }}
+          </span>
+          <strong>{{ server.name | shorten: limit }}</strong> |
+          {{ server.instanceType | uppercase }} |
+          {{ server.started | date: "fullDate" | uppercase }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
